@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "Generador";
+
+}
+
+@model ProyectoGru.Models.GeneradorModel
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h6 class="text-center panel-title" style="height:35px;font-size:30px;color:rgb(3,134,255);">Generador de Trabajos</h6>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-0" style="height:50px;width:235px;"><strong style="font-size:20px;padding:0px;margin:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;margin-left:30px;">Ruta Origen</strong></div>
+            <div class="col-md-8">
+                <input type="text" style="width:550px;height:40px;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" style="font-size:19px;width:235px;height:50px;"><strong style="margin-left:30px;">Ruta Destino</strong></div>
+            <div class="col-md-8">
+                <input type="text" style="width:550px;height:40px;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><strong style="font-size:19px;padding:33px;height:0px;width:-1px;">Transcoder </strong></div>
+            <div class="col-md-9">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="max-width:370px;">Seleccione un Transcoder <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        @foreach (var t in Model.Transcoders)
+                        {
+                        <li role="presentation"><a href="#">@t</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" style="font-size:19px;"><strong style="padding:31px;">Contenedor </strong></div>
+            <div class="col-md-9">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Seleccione un Contenedor<span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        @foreach (var c in Model.Contenedores)
+                        {
+                            <li role="presentation"><a href="#">@c </a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Video Settings</h3>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+<div class="row">
+    <div class="col-md-6"><strong>Codec</strong></div>
+    <div class="col-md-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Seleccione Codec <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                @foreach (var cv in Model.CodecVideos)
+                {
+                    <li role="presentation"><a href="#">@cv</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6"><strong>Resolucion Horizontal</strong></div>
+    <div class="col-md-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li role="presentation"><a href="#">First Item</a></li>
+                <li role="presentation"><a href="#">Second Item</a></li>
+                <li role="presentation"><a href="#">Third Item</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6"><strong>Resolucion Vertical</strong></div>
+    <div class="col-md-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li role="presentation"><a href="#">First Item</a></li>
+                <li role="presentation"><a href="#">Second Item</a></li>
+                <li role="presentation"><a href="#">Third Item</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6"><strong>Bitrate </strong></div>
+    <div class="col-md-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li role="presentation"><a href="#">First Item</a></li>
+                <li role="presentation"><a href="#">Second Item</a></li>
+                <li role="presentation"><a href="#">Third Item</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Audio Settings</h3>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+<div class="row">
+    <div class="col-md-6"><strong>Codec </strong></div>
+    <div class="col-md-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Seleccione Codec<span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                @foreach (var ca in Model.CodecAudios)
+                {
+                    <li role="presentation"><a href="#">@ca</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6"><strong>Canales </strong></div>
+    <div class="col-md-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li role="presentation"><a href="#">First Item</a></li>
+                <li role="presentation"><a href="#">Second Item</a></li>
+                <li role="presentation"><a href="#">Third Item</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6"><strong>Muestreo </strong></div>
+    <div class="col-md-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li role="presentation"><a href="#">First Item</a></li>
+                <li role="presentation"><a href="#">Second Item</a></li>
+                <li role="presentation"><a href="#">Third Item</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6"><strong>Bitrate </strong></div>
+    <div class="col-md-6">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li role="presentation"><a href="#">First Item</a></li>
+                <li role="presentation"><a href="#">Second Item</a></li>
+                <li role="presentation"><a href="#">Third Item</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-offset-4 col-md-12 col-md-offset-4 col-sm-offset-4 col-xs-offset-2">
+        <button class="btn btn-success active btn-block btn-lg" type="button" style="width:220px;height:50px;">Generar !</button>
+    </div>
+</div>

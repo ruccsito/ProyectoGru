@@ -218,7 +218,6 @@
       <DependentUpon>ProyectoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneradorModel.cs" />
-    <Compile Include="Models\GenFormModel.cs" />
     <Compile Include="Models\NodoConexion.cs">
       <DependentUpon>ProyectoModel.tt</DependentUpon>
     </Compile>
@@ -307,6 +306,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Trabajos\Finalizados.cshtml" />
+    <Content Include="Views\Trabajos\Original_Generador.cshtml" />
     <Content Include="Views\Trabajos\Generador.cshtml" />
   </ItemGroup>
   <ItemGroup>

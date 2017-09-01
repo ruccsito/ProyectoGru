@@ -6,173 +6,212 @@
 
 @model ProyectoGru.Models.GeneradorModel
 
-<div class="panel panel-default">
+    <form action="/Trabajos/Generador" method="post">
+        <div class="form-group row">
+            <label for="sourceFile" class="col-sm-2 col-form-label">Source File</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="sourceFile" placeholder="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="targetFile" class="col-sm-2 col-form-label">Target File</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="targetFile" placeholder="">
+            </div>
+        </div>
+        <fieldset class="form-group">
+            @*
+                Para los transcoders y los containers falta hacer el for para listar los resultados de la DB.    
+            *@
+            <div class="row">
+                <label class="col-form-legend col-sm-2">Select transcoder</label>
+                <div class="col-sm-4">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="transcoder" id="gridRadios1" value="Vantage" checked>
+                            Vantage
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="transcoder" id="gridRadios2" value="WFS">
+                            WFS
+                        </label>
+                    </div>
+                </div>
+
+                <label class="col-form-legend col-sm-2">Select Container</label>
+                <div class="col-sm-4">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="container" id="gridRadios1" value="MP4" checked>
+                            MP4
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="container" id="gridRadios2" value="MXF">
+                            MXF
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Video Settings</h4>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="videoCodec" class="col-form-label">Video Codec</label>
+                    <select name="videoCodec" class="form-control">
+                        Choose                        
+                        @foreach (var cv in Model.CodecVideos)
+                        {
+                            <option value="@cv">@cv</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="height" class="col-form-label">Height</label>
+                    <select name="height" class="form-control">
+                        Choose
+                        <option value="1024">1024</option>
+                        <option value="1080">1080</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="width" class="col-form-label">Width</label>
+                    <select name="width" class="form-control">
+                        Choose
+                        <option value="768">768</option>
+                        <option value="1920">1920</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="videoBitrate" class="col-form-label">Bitrate</label>
+                    <select name="videoBitrate" class="form-control">
+                        Choose
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                        <option value="30000">30000</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Audio Settings</h4>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="audioCodec" class="col-form-label">Audio Codec</label>
+                    <select name="audioCodec" class="form-control">
+                        Choose
+                        <option value="MP3">MP3</option>
+                        <option value="OGG">OGG</option>
+                        <option value="WAV">WAV</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="channels" class="col-form-label">Canales</label>
+                    <select name="channels" class="form-control">
+                        Choose
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="sampling" class="col-form-label">Muestreo</label>
+                    <select name="sampling" class="form-control">
+                        Choose
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="300">300</option>
+                        <option value="400">400</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="audioBitrate" class="col-form-label">Bitrate</label>
+                    <select name="audioBitrate" class="form-control">
+                        Choose
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                        <option value="30000">30000</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        @*<div class="form-group row">
+            <div class="col-sm-2">Checkbox</div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox"> Check me out
+                    </label>
+                </div>
+            </div>
+        </div>*@
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </form>
+
+
+
+@*<div class="panel panel-default">
     <div class="panel-heading">
         <h6 class="text-center panel-title" style="height:35px;font-size:30px;color:rgb(3,134,255);">Generador de Trabajos</h6>
     </div>
     <div class="panel-body">
-        <div class="row">
-            <div class="col-md-7 col-md-offset-0" style="height:50px;width:235px;"><strong style="font-size:20px;padding:0px;margin:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;margin-left:30px;">Ruta Origen</strong></div>
-            <div class="col-md-8">
-                <input type="text" style="width:550px;height:40px;">
+        <form action="/Trabajos/Generador" method="post">
+            <div class="form-group">
+                <label for="inputAddress" class="col-form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3" style="font-size:19px;width:235px;height:50px;"><strong style="margin-left:30px;">Ruta Destino</strong></div>
-            <div class="col-md-8">
-                <input type="text" style="width:550px;height:40px;">
+            <div class="form-group">
+                <label for="inputAddress2" class="col-form-label">Address 2</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3"><strong style="font-size:19px;padding:33px;height:0px;width:-1px;">Transcoder </strong></div>
-            <div class="col-md-9">
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="max-width:370px;">Seleccione un Transcoder <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu">
-                        @foreach (var t in Model.Transcoders)
-                        {
-                        <li role="presentation"><a href="#">@t</a></li>
-                        }
-                    </ul>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity" class="col-form-label">City</label>
+                    <input type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState" class="col-form-label">State</label>
+                    <select id="inputState" class="form-control">Choose</select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip" class="col-form-label">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3" style="font-size:19px;"><strong style="padding:31px;">Contenedor </strong></div>
-            <div class="col-md-9">
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Seleccione un Contenedor<span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu">
-                        @foreach (var c in Model.Contenedores)
-                        {
-                            <li role="presentation"><a href="#">@c </a></li>
-                        }
-                    </ul>
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox"> Check me out
+                    </label>
                 </div>
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <h3>Video Settings</h3>
-    </div>
-    <div class="col-md-6"></div>
-</div>
-<div class="row">
-    <div class="col-md-6"><strong>Codec</strong></div>
-    <div class="col-md-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Seleccione Codec <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-                @foreach (var cv in Model.CodecVideos)
-                {
-                    <li role="presentation"><a href="#">@cv</a></li>
-                }
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6"><strong>Resolucion Horizontal</strong></div>
-    <div class="col-md-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-                <li role="presentation"><a href="#">First Item</a></li>
-                <li role="presentation"><a href="#">Second Item</a></li>
-                <li role="presentation"><a href="#">Third Item</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6"><strong>Resolucion Vertical</strong></div>
-    <div class="col-md-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-                <li role="presentation"><a href="#">First Item</a></li>
-                <li role="presentation"><a href="#">Second Item</a></li>
-                <li role="presentation"><a href="#">Third Item</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6"><strong>Bitrate </strong></div>
-    <div class="col-md-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-                <li role="presentation"><a href="#">First Item</a></li>
-                <li role="presentation"><a href="#">Second Item</a></li>
-                <li role="presentation"><a href="#">Third Item</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <h3>Audio Settings</h3>
-    </div>
-    <div class="col-md-6"></div>
-</div>
-<div class="row">
-    <div class="col-md-6"><strong>Codec </strong></div>
-    <div class="col-md-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Seleccione Codec<span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-                @foreach (var ca in Model.CodecAudios)
-                {
-                    <li role="presentation"><a href="#">@ca</a></li>
-                }
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6"><strong>Canales </strong></div>
-    <div class="col-md-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-                <li role="presentation"><a href="#">First Item</a></li>
-                <li role="presentation"><a href="#">Second Item</a></li>
-                <li role="presentation"><a href="#">Third Item</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6"><strong>Muestreo </strong></div>
-    <div class="col-md-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-                <li role="presentation"><a href="#">First Item</a></li>
-                <li role="presentation"><a href="#">Second Item</a></li>
-                <li role="presentation"><a href="#">Third Item</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6"><strong>Bitrate </strong></div>
-    <div class="col-md-6">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-                <li role="presentation"><a href="#">First Item</a></li>
-                <li role="presentation"><a href="#">Second Item</a></li>
-                <li role="presentation"><a href="#">Third Item</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-offset-4 col-md-12 col-md-offset-4 col-sm-offset-4 col-xs-offset-2">
-        <button class="btn btn-success active btn-block btn-lg" type="button" style="width:220px;height:50px;">Generar !</button>
-    </div>
-</div>
+</div>*@
