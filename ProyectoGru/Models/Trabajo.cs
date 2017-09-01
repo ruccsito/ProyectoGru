@@ -18,5 +18,17 @@ namespace ProyectoGru.Models
         public string Tipo { get; set; }
         public string Resultado { get; set; }
         public string Comentarios { get; set; }
+        public string sourceFile { get; set; }
+        public string targetFile { get; set; }
+        public string transcoder { get; set; }
+        public string container { get; set; }
+        public string videoCodec { get; set; }
+        public string height { get; set; }
+        public string width { get; set; }
+        public string videoBitRate { get; set; }
+        public string audioCodec { get; set; }
+        public string channels { get; set; }
+        public string sampling { get; set; }
+        public string audioBitRate { get; set; }
     }
 }

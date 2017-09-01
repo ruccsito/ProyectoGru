@@ -218,6 +218,7 @@
       <DependentUpon>ProyectoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneradorModel.cs" />
+    <Compile Include="Models\GenFormModel.cs" />
     <Compile Include="Models\NodoConexion.cs">
       <DependentUpon>ProyectoModel.tt</DependentUpon>
     </Compile>

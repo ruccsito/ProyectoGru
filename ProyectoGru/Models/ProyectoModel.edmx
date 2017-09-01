@@ -89,6 +89,18 @@
           <Property Name="Tipo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Resultado" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Comentarios" Type="varchar" MaxLength="50" />
+          <Property Name="sourceFile" Type="varchar" MaxLength="50" />
+          <Property Name="targetFile" Type="varchar" MaxLength="50" />
+          <Property Name="transcoder" Type="varchar" MaxLength="50" />
+          <Property Name="container" Type="varchar" MaxLength="50" />
+          <Property Name="videoCodec" Type="varchar" MaxLength="50" />
+          <Property Name="height" Type="varchar" MaxLength="50" />
+          <Property Name="width" Type="varchar" MaxLength="50" />
+          <Property Name="videoBitRate" Type="varchar" MaxLength="50" />
+          <Property Name="audioCodec" Type="varchar" MaxLength="50" />
+          <Property Name="channels" Type="varchar" MaxLength="50" />
+          <Property Name="sampling" Type="varchar" MaxLength="50" />
+          <Property Name="audioBitRate" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Transcoder">
           <Key>
@@ -342,6 +354,18 @@
           <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sourceFile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="targetFile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="transcoder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="container" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="videoCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="height" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="width" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="videoBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="audioCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="channels" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sampling" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="audioBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Transcoder">
           <Key>
@@ -589,6 +613,18 @@
           <EntitySetMapping Name="Trabajos">
             <EntityTypeMapping TypeName="ProyectoModel.Trabajo">
               <MappingFragment StoreEntitySet="Trabajos">
+                <ScalarProperty Name="audioBitRate" ColumnName="audioBitRate" />
+                <ScalarProperty Name="sampling" ColumnName="sampling" />
+                <ScalarProperty Name="channels" ColumnName="channels" />
+                <ScalarProperty Name="audioCodec" ColumnName="audioCodec" />
+                <ScalarProperty Name="videoBitRate" ColumnName="videoBitRate" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="videoCodec" ColumnName="videoCodec" />
+                <ScalarProperty Name="container" ColumnName="container" />
+                <ScalarProperty Name="transcoder" ColumnName="transcoder" />
+                <ScalarProperty Name="targetFile" ColumnName="targetFile" />
+                <ScalarProperty Name="sourceFile" ColumnName="sourceFile" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Resultado" ColumnName="Resultado" />
