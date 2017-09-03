@@ -4,44 +4,45 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoGru.Models;
+using ProyectoGru.Data;
 
 namespace ProyectoGru.Controllers
 {
     public class TrabajosController : Controller
     {
-        private ProyectoEntities db = new ProyectoEntities();
+        private TrabajosRepo trRepo;
+
+        public TrabajosController()
+        {
+            trRepo = new TrabajosRepo(new ProyectoEntities());
+        }
 
         // GET: Trabajos
-        public ActionResult Finalizados()
+        public ActionResult Index()
         {
-            List<Trabajo> query = (from t in db.Trabajos select t).ToList();
-            return View(query);
+            IEnumerable<Trabajo> trabajos = trRepo.Get();
+            ViewBag.newJob = TempData["newJob"];
+            return View(trabajos);
         }
-        public ActionResult Generador()
+
+        [HttpPost]  // POST: Trabajos/Crear
+        public ActionResult Crear(Trabajo trabajo)
         {
-            GeneradorModel gen = new GeneradorModel();
-            gen.Transcoders = new List<string>();
-            gen.Contenedores = new List<string>();
-            gen.CodecVideos = new List<string>();
-            gen.CodecAudios = new List<string>();
+            // Agregar trabajo a la DB.
+            if (ModelState.IsValid)
+            {
+                trRepo.Insert(trabajo);
+                trRepo.Save();
+                TempData["newJob"] = "true";
+            }
 
-            gen.Transcoders.AddRange(
-                (from t in db.Transcoders select t.Nombre).ToList()
-                );
+            return RedirectToAction("Index");
+        }
 
-            gen.Contenedores.AddRange(
-                (from c in db.Contenedors select c.Nombre).ToList()
-             );
-
-            gen.CodecVideos.AddRange(
-                (from cv in db.CodecVideos select cv.Nombre).ToList()
-             );
-
-            gen.CodecAudios.AddRange(
-                (from ca in db.CodecAudios select ca.Nombre).ToList()
-             );
-
-            return View(gen);
+        public ActionResult Ok()
+        {
+            ViewBag.Message = "Creado!";
+            return View();
         }
     }
 }
