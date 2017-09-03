@@ -10,7 +10,6 @@ namespace ProyectoGru.Controllers
 {
     public class TrabajosController : Controller
     {
-        private string message;
         private TrabajosRepo trRepo;
 
         public TrabajosController()
@@ -22,7 +21,7 @@ namespace ProyectoGru.Controllers
         public ActionResult Index()
         {
             IEnumerable<Trabajo> trabajos = trRepo.Get();
-            ViewBag.message = TempData["message"];
+            ViewBag.newJob = TempData["newJob"];
             return View(trabajos);
         }
 
@@ -34,7 +33,7 @@ namespace ProyectoGru.Controllers
             {
                 trRepo.Insert(trabajo);
                 trRepo.Save();
-                TempData["message"] = "Created ok!";
+                TempData["newJob"] = "true";
             }
 
             return RedirectToAction("Index");

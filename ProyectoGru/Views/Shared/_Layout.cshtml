@@ -11,9 +11,10 @@
     <!-- Bootstrap core CSS -->
     <link href="~/Content/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
     <!-- Custom styles for this template -->
     <link href="~/Content/dist/css/justified-nav.css" rel="stylesheet">
+    <link href="~/Content/dist/css/generador.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -27,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav text-md-center nav-justified w-100">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/Home/Index">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/Home/Index">Inicio <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Generador">Generador</a>
@@ -44,11 +45,12 @@
 
         <!-- Site footer -->
         <footer class="footer">
-            <p>&copy; Gru Inc. 2017</p>
+            <p>&copy; Minions Inc. 2017</p>
         </footer>
 
     </div> 
     <!-- /container -->
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -58,5 +60,15 @@
     <script src="~/Content/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="~/Content/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Open modal -->
+    @if (!String.IsNullOrEmpty(ViewBag.newJob))
+    {
+        <script type="text/javascript">
+    $(document).ready(function(){
+        $("#newJobModal").modal('show');
+    });
+        </script>
+    }
 </body>
 </html>

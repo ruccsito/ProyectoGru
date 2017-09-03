@@ -16,7 +16,7 @@ namespace ProyectoGru.Data
 
         public IEnumerable<Trabajo> Get()
         {
-            return db.Trabajos.ToList();
+            return db.Trabajos.OrderByDescending(t => t.ID).ToList();
         }
         public void Insert(Trabajo trabajo)
         {
