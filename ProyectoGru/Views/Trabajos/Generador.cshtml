@@ -4,7 +4,7 @@
 
 }
 
-@model ProyectoGru.Models.GeneradorModel
+@model ProyectoGru.Models.FormData
 
     <form action="/Trabajos/Generador" method="post">
         <div class="form-group row">
@@ -56,106 +56,107 @@
                     </div>
                 </div>
             </div>
-
-            <div class="form-row">
-                <div class="row">
+            <div class="row">
                     <div class="col-md-6">
                         <h4>Video Settings</h4>
                     </div>
                     <div class="col-md-6"></div>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="videoCodec" class="col-form-label">Video Codec</label>
-                    <select name="videoCodec" class="form-control">
-                        Choose                        
-                        @foreach (var cv in Model.CodecVideos)
+            </div>
+            <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="videoCodec" class="col-form-label">Video Codec</label>
+                        <select name="videoCodec" class="form-control">
+                            Choose
+                            @foreach (var cv in Model.CodecVideos)
                         {
-                            <option value="@cv">@cv</option>
+                                <option value="@cv">@cv</option>
                         }
-                    </select>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="height" class="col-form-label">Height</label>
+                        <select name="height" class="form-control">
+                            Choose
+                            <option value="1024">1024</option>
+                            <option value="1080">1080</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="width" class="col-form-label">Width</label>
+                        <select name="width" class="form-control">
+                            Choose
+                            <option value="768">768</option>
+                            <option value="1920">1920</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="videoBitrate" class="col-form-label">Bitrate</label>
+                        <select name="videoBitrate" class="form-control">
+                            Choose
+                            <option value="10000">10000</option>
+                            <option value="20000">20000</option>
+                            <option value="30000">30000</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="height" class="col-form-label">Height</label>
-                    <select name="height" class="form-control">
-                        Choose
-                        <option value="1024">1024</option>
-                        <option value="1080">1080</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="width" class="col-form-label">Width</label>
-                    <select name="width" class="form-control">
-                        Choose
-                        <option value="768">768</option>
-                        <option value="1920">1920</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="videoBitrate" class="col-form-label">Bitrate</label>
-                    <select name="videoBitrate" class="form-control">
-                        Choose
-                        <option value="10000">10000</option>
-                        <option value="20000">20000</option>
-                        <option value="30000">30000</option>
-                    </select>
-                </div>
-                <div class="row">
+            <div class="row">
                     <div class="col-md-6">
                         <h4>Audio Settings</h4>
                     </div>
                     <div class="col-md-6"></div>
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="audioCodec" class="col-form-label">Audio Codec</label>
-                    <select name="audioCodec" class="form-control">
-                        Choose
-                        <option value="MP3">MP3</option>
-                        <option value="OGG">OGG</option>
-                        <option value="WAV">WAV</option>
-                    </select>
+            <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="audioCodec" class="col-form-label">Audio Codec</label>
+                        <select name="audioCodec" class="form-control">
+                            Choose
+                            <option value="MP3">MP3</option>
+                            <option value="OGG">OGG</option>
+                            <option value="WAV">WAV</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="channels" class="col-form-label">Canales</label>
+                        <select name="channels" class="form-control">
+                            Choose
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="sampling" class="col-form-label">Muestreo</label>
+                        <select name="sampling" class="form-control">
+                            Choose
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                            <option value="300">300</option>
+                            <option value="400">400</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="audioBitrate" class="col-form-label">Bitrate</label>
+                        <select name="audioBitrate" class="form-control">
+                            Choose
+                            <option value="10000">10000</option>
+                            <option value="20000">20000</option>
+                            <option value="30000">30000</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="channels" class="col-form-label">Canales</label>
-                    <select name="channels" class="form-control">
-                        Choose
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="sampling" class="col-form-label">Muestreo</label>
-                    <select name="sampling" class="form-control">
-                        Choose
-                        <option value="100">100</option>
-                        <option value="200">200</option>
-                        <option value="300">300</option>
-                        <option value="400">400</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="audioBitrate" class="col-form-label">Bitrate</label>
-                    <select name="audioBitrate" class="form-control">
-                        Choose
-                        <option value="10000">10000</option>
-                        <option value="20000">20000</option>
-                        <option value="30000">30000</option>
-                    </select>
-                </div>
-            </div>
         </fieldset>
         @*<div class="form-group row">
             <div class="col-sm-2">Checkbox</div>

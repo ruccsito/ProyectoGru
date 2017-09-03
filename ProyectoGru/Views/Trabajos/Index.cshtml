@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Finalizados";
+}
+
+@model  IEnumerable<ProyectoGru.Data.Trabajo>
+
+@if (!string.IsNullOrEmpty(ViewBag.message))
+{
+    <div class="text-center">
+        <span class="badge badge-success text-center">@ViewBag.message</span>
+    </div>
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Source</th>
+            <th>Target</th>
+            <th>Transcoder</th>
+            <th>Video Codec</th>
+            <th>Audio Codec</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <th scope="row">@t.ID</th>
+                <td>@t.sourceFile</td>
+                <td>@t.targetFile</td>
+                <td>@t.transcoder</td>
+                <td>@t.videoCodec</td>
+                <td>@t.audioCodec</td>
+            </tr>
+        }
+    </tbody>
+</table>
