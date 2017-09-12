@@ -101,6 +101,7 @@
           <Property Name="channels" Type="varchar" MaxLength="50" />
           <Property Name="sampling" Type="varchar" MaxLength="50" />
           <Property Name="audioBitRate" Type="varchar" MaxLength="50" />
+          <Property Name="transcodeStatus" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Transcoder">
           <Key>
@@ -366,6 +367,7 @@
           <Property Name="channels" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="sampling" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="audioBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="transcodeStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Transcoder">
           <Key>
@@ -613,6 +615,7 @@
           <EntitySetMapping Name="Trabajos">
             <EntityTypeMapping TypeName="ProyectoModel.Trabajo">
               <MappingFragment StoreEntitySet="Trabajos">
+                <ScalarProperty Name="transcodeStatus" ColumnName="transcodeStatus" />
                 <ScalarProperty Name="audioBitRate" ColumnName="audioBitRate" />
                 <ScalarProperty Name="sampling" ColumnName="sampling" />
                 <ScalarProperty Name="channels" ColumnName="channels" />
