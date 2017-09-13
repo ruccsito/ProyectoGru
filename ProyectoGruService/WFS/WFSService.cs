@@ -5,15 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using ProyectoGruService.WfsServiceReference;
 using System.IO;
+using System.Threading;
 
 namespace ProyectoGruService.WFS
 {
-    class WFSService
+    class WFSService : ITranscode
     {
-        public Job StartJob(string input, string output)
-        {
-            WfcJmServicesClient client = new WfcJmServicesClient();
+        private string input;
+        private string output;
+        private WfcJmServicesClient client;
 
+        public void StartJob(string input, string output)
+        {
+            // Mod interface para que reciba el Trabajo trabajo.
+            this.input = input;
+            this.output = output;
+            client = new WfcJmServicesClient();
+
+            var j = QueueJob();
+            MonitorJob(j);
+
+            // Queue the job. 
+            // Monitor the new job. 
+            // Update DB with job status. 
+
+        }
+        public Job QueueJob()
+        {
             // Armar el workflow. Reemplazamos el path del destino en el XML.
             string workflowTemplate = @"C:\Users\julioar\DotNet\ProyectoGru\ProyectoGruService\SupportFiles\Workflow_Transcode.xml";
             string workflow = File.ReadAllText(workflowTemplate);
@@ -36,6 +54,27 @@ namespace ProyectoGruService.WFS
                 return null;
             }
             return job;
+        }
+
+        public void MonitorJob(Job job)
+        {
+            bool completed = false;
+            while (!completed)
+            {
+                job = client.GetJob(job.Guid, true);
+
+                Console.WriteLine("Status : " + job.Status);
+                Console.WriteLine("Tasks : " + job.Task.Length);
+                int c = 0;
+
+                foreach (var task in job.Task)
+                {
+                    Console.WriteLine("Task " + c + " status: " + task.TaskStatus);
+                    c += 1;
+                }
+                Thread.Sleep(20000);
+                Console.Clear();
+            }
         }
     }
 }

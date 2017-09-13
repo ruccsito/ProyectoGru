@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{077B1783-33FF-446E-A1C5-DE66508F6521}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProyectoGruData</RootNamespace>
+    <AssemblyName>ProyectoGruData</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\CodecAudio.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CodecVideo.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Contenedor.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ContenedorCodecAudio.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ContenedorCodecVideo.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ContenedorTranscoder.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FormRepo.cs" />
+    <Compile Include="Data\NodoConexion.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProyectoModel.Context.cs">
+      <DependentUpon>ProyectoModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\ProyectoModel.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\ProyectoModel.Designer.cs">
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Data\PuertoConexion.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagram.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Trabajo.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TrabajosRepo.cs" />
+    <Compile Include="Data\Transcoder.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Data\ProyectoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProyectoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\ProyectoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+      <LastGenOutput>ProyectoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ProyectoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+      <LastGenOutput>ProyectoModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\ProyectoModel.edmx.diagram">
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
