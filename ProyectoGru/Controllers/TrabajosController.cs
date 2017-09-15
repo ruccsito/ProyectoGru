@@ -31,6 +31,7 @@ namespace ProyectoGru.Controllers
             // Agregar trabajo a la DB.
             if (ModelState.IsValid)
             {
+                trabajo.transcodeStatus = "Created";
                 trRepo.Insert(trabajo);
                 trRepo.Save();
                 TempData["newJob"] = "true";
