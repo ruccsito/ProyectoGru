@@ -27,5 +27,27 @@ namespace ProyectoGru.Data
 
             return formData;
         }
+
+        public List<string> GetTranscoders()
+        {
+            return db.Transcoders.Select(t => t.Nombre).ToList();
+        }
+        public List<string> GetContainers(string transcoder)
+        {
+            return (from ct in db.ContenedorTranscoders
+                    join c in db.Contenedors on ct.IdContenedor equals c.IdContenedor
+                    join t in db.Transcoders on ct.IdTranscoder equals t.IdTranscoder
+                    where t.Nombre == transcoder
+                    select c.Nombre).ToList();
+        }
+
+        public List<string> GetVideoCodecs(string container)
+        {
+            return (from ccv in db.ContenedorCodecVideos
+                    join cv in db.CodecVideos on ccv.IdCodecVideo equals cv.IdCodecVideo
+                    join ct in db.Contenedors on ccv.IdContenedor equals ct.IdContenedor
+                    where ct.Nombre == container
+                    select cv.Nombre).ToList();
+        }
     }
 }

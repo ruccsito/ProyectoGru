@@ -19,7 +19,32 @@ namespace ProyectoGru.Controllers
         // GET: Generador
         public ActionResult Index()
         {
-            return View(formRepo.Get());
+            ViewBag.transcoders = formRepo.GetTranscoders();
+            return View();
+        }
+
+        // Get: Generador/Partial
+
+        public ActionResult Test()
+        {
+            ViewBag.transcoders = formRepo.GetTranscoders();
+            return View();
+        }
+
+        public  ActionResult Containers(string option)
+        {
+            // https://stackoverflow.com/questions/11774741/load-partial-view-depending-on-dropdown-selection-in-mvc3
+
+            ViewBag.containers = formRepo.GetContainers(option);
+            return PartialView();
+        }
+
+        public ActionResult VideoCodecs(string option)
+        {
+            // https://stackoverflow.com/questions/11774741/load-partial-view-depending-on-dropdown-selection-in-mvc3
+
+            ViewBag.codecvideos = formRepo.GetVideoCodecs(option);
+            return PartialView();
         }
     }
 }
