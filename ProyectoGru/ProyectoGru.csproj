@@ -332,6 +332,7 @@
     <Content Include="Views\Generador\Containers.cshtml" />
     <Content Include="Views\Generador\Test.cshtml" />
     <Content Include="Views\Generador\VideoCodecs.cshtml" />
+    <Content Include="Views\Generador\Selects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,5 @@
 ﻿using ProyectoGru.Data;
+using ProyectoGru.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,16 +36,22 @@ namespace ProyectoGru.Controllers
         {
             // https://stackoverflow.com/questions/11774741/load-partial-view-depending-on-dropdown-selection-in-mvc3
 
-            ViewBag.containers = formRepo.GetContainers(option);
-            return PartialView();
+            FormData fd = new FormData();
+            fd.id = "containersSelect";
+            fd.placeholder = "Seleccionar container";
+            fd.options = formRepo.GetContainers(option);
+
+            return PartialView("Selects", fd);
         }
 
         public ActionResult VideoCodecs(string option)
         {
-            // https://stackoverflow.com/questions/11774741/load-partial-view-depending-on-dropdown-selection-in-mvc3
+            FormData fd = new FormData();
+            fd.id = "videoCodecs";
+            fd.placeholder = "Seleccionar codec";
+            fd.options = formRepo.GetVideoCodecs(option);
 
-            ViewBag.codecvideos = formRepo.GetVideoCodecs(option);
-            return PartialView();
+            return PartialView("Selects",fd);
         }
     }
 }

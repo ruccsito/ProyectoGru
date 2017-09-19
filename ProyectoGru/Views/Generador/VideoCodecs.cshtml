@@ -1,1 +1,7 @@
-﻿<h6>Ola!</h6>
+﻿<select name="videoCodec" class="form-control" id="videoCodecs">
+    <option disabled selected>Seleccionar codec</option>
+    @foreach (var vc in ViewBag.videoCodecs)
+    {
+        <option value="@vc">@vc</option>
+    }
+</select>

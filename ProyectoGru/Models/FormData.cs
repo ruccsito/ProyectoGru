@@ -7,9 +7,8 @@ namespace ProyectoGru.Models
 {
     public class FormData
     {
-        public List<string> Transcoders { get; set; }
-        public List<string> Contenedores { get; set; }
-        public List<string> CodecVideos { get; set; }
-        public List<string> CodecAudios { get; set; }
+        public string id { get; set; }
+        public string placeholder { get; set; }
+        public List<string> options { get; set; }
     }
 }
