@@ -33,9 +33,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +55,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ProyectoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProyectoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProyectoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Trabajo.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TrabajosRepo.cs" />
     <Compile Include="ITranscode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,10 +82,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="WFS\WFSService.cs" />
+    <Compile Include="Services\FFMPEGService.cs" />
+    <Compile Include="Services\WFSService.cs" />
+    <Compile Include="Transcode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Data\ProyectoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProyectoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\ProyectoModel.edmx.diagram">
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Service References\WfsServiceReference\item.wsdl" />
     <None Include="Service References\WfsServiceReference\item.xsd">
       <SubType>Designer</SubType>
@@ -636,9 +675,21 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Content Include="Data\ProyectoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+      <LastGenOutput>ProyectoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ProyectoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+      <LastGenOutput>ProyectoModel.cs</LastGenOutput>
+    </Content>
     <Content Include="SupportFiles\Workflow_Transcode.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

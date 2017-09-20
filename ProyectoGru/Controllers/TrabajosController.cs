@@ -14,7 +14,7 @@ namespace ProyectoGru.Controllers
 
         public TrabajosController()
         {
-            trRepo = new TrabajosRepo(new ProyectoEntities());
+            trRepo = new TrabajosRepo();
         }
 
         // GET: Trabajos
@@ -31,7 +31,7 @@ namespace ProyectoGru.Controllers
             // Agregar trabajo a la DB.
             if (ModelState.IsValid)
             {
-                trabajo.transcodeStatus = "Created";
+                trabajo.transcodeStatus = "Creado";
                 trRepo.Insert(trabajo);
                 trRepo.Save();
                 TempData["newJob"] = "true";

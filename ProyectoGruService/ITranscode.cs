@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoGruService.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace ProyectoGruService
 {
     public interface ITranscode
     {
-        void StartJob(string input, string output);
+        void StartJob(Trabajo t);
     }
 }

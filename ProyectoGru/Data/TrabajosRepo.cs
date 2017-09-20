@@ -7,11 +7,10 @@ namespace ProyectoGru.Data
 {
     public class TrabajosRepo
     {
-        private ProyectoEntities db;
+        private ProyectoEntities db = new ProyectoEntities();
 
-        public TrabajosRepo(ProyectoEntities context)
+        public TrabajosRepo()
         {
-            db = context;
         }
 
         public IEnumerable<Trabajo> Get()
