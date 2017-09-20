@@ -302,6 +302,7 @@
     <Content Include="Content\dist\css\bootstrap.css.map" />
     <Content Include="Content\dist\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Form.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -328,6 +329,7 @@
     <Content Include="Views\Trabajos\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Generador\Index.cshtml" />
+    <Content Include="Views\Generador\Selects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

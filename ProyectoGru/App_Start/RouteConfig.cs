@@ -12,6 +12,11 @@ namespace ProyectoGru
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                name: "Generador",
+                url: "{controller}/{action}/{option}",
+                defaults: new { option = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",
