@@ -329,9 +329,6 @@
     <Content Include="Views\Trabajos\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Generador\Index.cshtml" />
-    <Content Include="Views\Generador\Containers.cshtml" />
-    <Content Include="Views\Generador\Test.cshtml" />
-    <Content Include="Views\Generador\VideoCodecs.cshtml" />
     <Content Include="Views\Generador\Selects.cshtml" />
   </ItemGroup>
   <ItemGroup>

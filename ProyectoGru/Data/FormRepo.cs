@@ -36,5 +36,14 @@ namespace ProyectoGru.Data
                     where ct.Nombre == container
                     select cv.Nombre).ToList();
         }
+
+        public List<string> GetAudioCodecs(string container)
+        {
+            return (from cca in db.ContenedorCodecAudios
+                        join ct in db.Contenedors on cca.IdContenedorAudio equals ct.IdContenedor
+                        join ca in db.CodecAudios on cca.IdContenedorAudio equals ca.IdCodecAudio
+                    where ct.Nombre == container
+                    select ca.Nombre).ToList();
+        }
     }
 }

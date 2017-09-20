@@ -21,4 +21,9 @@ $(document).on('change', '#containers', '#containerSelect', function () {
         $('#videoCodecs').html(data);
         $('#videoCodecs').fadeIn('fast');
     });
+
+    $.get('/Generador/AudioCodecs/' + option, function (data) {
+        $('#audioCodecs').html(data);
+        $('#audioCodecs').fadeIn('fast');
+    });
 });

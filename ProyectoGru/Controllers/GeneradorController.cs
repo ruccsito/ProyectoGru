@@ -24,20 +24,11 @@ namespace ProyectoGru.Controllers
             return View();
         }
 
-        // Get: Generador/Partial
-
-        public ActionResult Test()
-        {
-            ViewBag.transcoders = formRepo.GetTranscoders();
-            return View();
-        }
-
         public  ActionResult Containers(string option)
         {
-            // https://stackoverflow.com/questions/11774741/load-partial-view-depending-on-dropdown-selection-in-mvc3
-
             FormData fd = new FormData();
             fd.id = "containersSelect";
+            fd.name = "container";
             fd.placeholder = "Seleccionar container";
             fd.options = formRepo.GetContainers(option);
 
@@ -48,10 +39,22 @@ namespace ProyectoGru.Controllers
         {
             FormData fd = new FormData();
             fd.id = "videoCodecs";
-            fd.placeholder = "Seleccionar codec";
+            fd.name = "videoCodec";
+            fd.placeholder = "Seleccionar";
             fd.options = formRepo.GetVideoCodecs(option);
 
             return PartialView("Selects",fd);
+        }
+
+        public ActionResult AudioCodecs(string option)
+        {
+            FormData fd = new FormData();
+            fd.id = "audioCodecs";
+            fd.name = "audioCodec";
+            fd.placeholder = "Seleccionar";
+            fd.options = formRepo.GetAudioCodecs(option);
+
+            return PartialView("Selects", fd);
         }
     }
 }

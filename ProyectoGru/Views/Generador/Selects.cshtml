@@ -1,6 +1,6 @@
 ﻿@model ProyectoGru.Models.FormData
 
-<select class="custom-select" id="@Model.id">
+<select class="custom-select" name="@Model.name" id="@Model.id">
     <option disabled selected>@Model.placeholder</option>
     @foreach (var vc in Model.options)
     {
