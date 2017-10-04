@@ -268,6 +268,7 @@
     <Content Include="Content\dist\js\bootstrap.js" />
     <Content Include="Content\dist\js\bootstrap.min.js" />
     <Content Include="Content\favicon.ico" />
+    <Content Include="Ejemplos.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
