@@ -92,7 +92,5 @@ namespace ProyectoGruService.Services
                 Console.Clear();
             }
         }
-
-
     }
 }
