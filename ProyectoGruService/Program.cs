@@ -13,7 +13,7 @@ namespace ProyectoGruService
         {
             // Traer de la DB el Trabajo, elegir el transcode y mandarle los datos de input, output y type.
             // Crear Transcode : ITranscode que reciba WFSService o FFMPEGService y llame a StartJob();    
-
+            // Esperar y volver a buscar. 
 
             while (true)
             {
@@ -27,7 +27,7 @@ namespace ProyectoGruService
                             transcode.Start(t, new WFSService());
                             break;
 
-                        case "Vantage": // Deberia ser FFMPEG.
+                        case "FFmpeg":
                             transcode.Start(t, new FFMPEGService());
                             break;
 
@@ -36,8 +36,7 @@ namespace ProyectoGruService
                     }
                 }
 
-                // Wait 60 secs and search again. 
-                Thread.Sleep(60000); 
+                Thread.Sleep(10000); 
             }
         }
     }
